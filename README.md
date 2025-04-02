@@ -1,4 +1,4 @@
-# rust-tutorial
+# Rust Gramming Language Tutorials
 
 This repository will help rust-beginner for studying and discussing about Rust Programming Language.
 
