@@ -44,13 +44,7 @@ docker-compose up -d
 
 This will start a Kafka broker using KRaft mode (no Zookeeper required) on `localhost:9092`.
 
-### 2. Build Services
-
-```bash
-cargo build --release
-```
-
-### 3. Create Kafka Topic
+### 2. Create Kafka Topic
 
 ```bash
 docker exec kafka kafka-topics.sh \
@@ -62,7 +56,40 @@ docker exec kafka kafka-topics.sh \
     --if-not-exists
 ```
 
+### 3. Test Kafka status manually
+
+In a new terminal, publish a few messages using the following command.
+
+```bash
+docker exec -it kafka kafka-console-producer.sh \
+    --bootstrap-server localhost:9092 \
+    --topic rust-messages
+```
+
+Once the producer starts, you can type messages:
+
+```bash
+Hello Kafka!
+This is a test message
+Message number 3
+```
+
+In another terminal, start a consumer to read the messages.
+
+```bash
+docker exec -it kafka kafka-console-consumer.sh \
+    --bootstrap-server localhost:9092 \
+    --topic rust-messages \
+    --from-beginning
+```
+
 ## 🚀 Quick Start
+
+### Build Services
+
+```bash
+cargo build --release
+```
 
 ### Option 1: Automated Script (Recommended)
 
