@@ -1,0 +1,43 @@
+[package]
+name = "redis-atomic-demo"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Redis client with async support
+redis = { version = "0.24", features = ["tokio-comp", "connection-manager"] }
+
+# Async runtime
+tokio = { version = "1.35", features = ["full"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# UUID generation
+uuid = { version = "1.6", features = ["v4"] }
+
+# Logging
+log = "0.4"
+env_logger = "0.10"
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Date/time
+chrono = { version = "0.4", features = ["serde"] }
+
+# CLI arguments
+clap = { version = "4.4", features = ["derive"] }
+
+# Random values for demo
+rand = "0.8"
+
+[[bin]]
+name = "main"
+path = "src/main.rs"
+
+[[bin]]
+name = "demo"
+path = "src/demo.rs"
